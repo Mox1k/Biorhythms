@@ -28,8 +28,8 @@ namespace Biorhythms
         {
             List<Biorhythm> biorhythms = new List<Biorhythm>();
             int arbitrarys = 0;
-            DateTime birthDate = DateTime.Now;
-
+            DateTime birthDate = Convert.ToDateTime(BirthDate.Text);
+                
             const int phys = 23;
             const int emot = 28;
             const int intel = 33;

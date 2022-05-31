@@ -38,7 +38,7 @@
                 <CheckBox x:Name="Check_Allow" FlowDirection="LeftToRight" VerticalAlignment="Center" Grid.Row="3" Grid.ColumnSpan="2" Checked="CheckBox_Checked" Unchecked="Check_Allow_Unchecked">
                     <TextBlock FlowDirection="RightToLeft" VerticalAlignment="Center" TextWrapping="Wrap" FontSize="10" Text="Произвольный ввод длительности прогноза"/>
                 </CheckBox>
-                <DatePicker x:Name="birthDate" Grid.Row="0" Grid.Column="1" SelectedDate="08.07.2002"></DatePicker>
+                <DatePicker x:Name="BirthDate" Grid.Row="0" Grid.Column="1" SelectedDate="08.07.2002"></DatePicker>
                 <DatePicker x:Name="countDownTime" Grid.Row="1" Grid.Column="1" SelectedDate="{x:Static sys:DateTime.Now}"></DatePicker>
                 <ComboBox Name="cmbCountdown" Grid.Row="2" Grid.Column="1" Height="20" Width="50" HorizontalAlignment="Right" VerticalAlignment="Center">
                     <ComboBoxItem>1</ComboBoxItem>
