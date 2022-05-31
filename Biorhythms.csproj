@@ -7,4 +7,20 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="data\flower.png" />
+    <None Remove="data\graphic1.png" />
+    <None Remove="data\word.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="data\flower.png" />
+    <Resource Include="data\graphic1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="data\word.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
 </Project>

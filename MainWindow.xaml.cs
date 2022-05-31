@@ -24,5 +24,15 @@ namespace Biorhythms
         {
             InitializeComponent();
         }
+
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            Custom_Date.IsEnabled = false;
+        }
+
+        private void Check_Allow_Unchecked(object sender, RoutedEventArgs e)
+        {
+            Custom_Date.IsEnabled = true;
+        }
     }
 }
