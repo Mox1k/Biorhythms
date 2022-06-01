@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows;
+using System.Linq;
+using System.Windows.Controls;
+using LiveCharts;
+using LiveCharts.Wpf;
 
 namespace Biorhythms
 {
@@ -59,6 +63,10 @@ namespace Biorhythms
                 biorhythms.Add(bior);
             }
             Dates.ItemsSource = biorhythms;
+
+
+
         }
+
     }
 }
