@@ -36,13 +36,13 @@
                 <TextBlock Text="Дата рождения" VerticalAlignment="Center" Grid.Row="0" FontSize="10"></TextBlock>
                 <TextBlock Text="Дата отсчета" VerticalAlignment="Center" Grid.Row="1" FontSize="10"></TextBlock>
                 <TextBlock Text="Длительность прогноза" VerticalAlignment="Center" Grid.Row="2" TextWrapping="Wrap" FontSize="10"></TextBlock>
-                <CheckBox x:Name="Check_Allow" FlowDirection="LeftToRight" VerticalAlignment="Center" Grid.Row="3" Grid.ColumnSpan="2" Checked="CheckBox_Checked" Unchecked="Check_Allow_Unchecked">
+                <CheckBox x:Name="Check_Allow" FlowDirection="LeftToRight" VerticalAlignment="Center" Grid.Row="3" Grid.ColumnSpan="2" Checked="Check_Allow_Checked" Unchecked="Check_Allow_Unchecked">
                     <TextBlock FlowDirection="RightToLeft" VerticalAlignment="Center" TextWrapping="Wrap" FontSize="10" Text="Произвольный ввод длительности прогноза"/>
                 </CheckBox>
                 <DatePicker x:Name="BirthDate" Grid.Row="0" Grid.Column="1" SelectedDate="08.07.2002"></DatePicker>
                 <DatePicker x:Name="countDownTime" Grid.Row="1" Grid.Column="1" SelectedDate="{x:Static sys:DateTime.Now}"></DatePicker>
-                <ComboBox Name="cmbCountdown" Grid.Row="2" Grid.Column="1" Height="20" Width="50" HorizontalAlignment="Right" VerticalAlignment="Center">
-                    <ComboBoxItem>1</ComboBoxItem>
+                <ComboBox Name="cmbCountdown" Grid.Row="2" Grid.Column="1" Height="20" Width="50" HorizontalAlignment="Right" VerticalAlignment="Center" >
+                    <ComboBoxItem IsSelected="True">1</ComboBoxItem>
                     <ComboBoxItem>3</ComboBoxItem>
                     <ComboBoxItem>5</ComboBoxItem>
                     <ComboBoxItem>7</ComboBoxItem>
@@ -89,14 +89,21 @@
                     <TextBlock VerticalAlignment="Center">Передать в Word</TextBlock>
                 </StackPanel>
             </Button>
-            <CheckBox FlowDirection="LeftToRight" VerticalAlignment="Center">
+            <CheckBox IsChecked="False" x:Name="dateon" FlowDirection="LeftToRight" VerticalAlignment="Center" Checked="dateon_Checked" Unchecked="dateon_Unchecked">
                 <TextBlock FlowDirection="LeftToRight" Text="Выводить дату на шкале" VerticalAlignment="Center"/>
             </CheckBox>
         </StackPanel>
 
         <GroupBox Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="2">
             
+            <lvc:CartesianChart Name="chart"  LegendLocation="Right" >
+                <lvc:CartesianChart.AxisY>
+                    <lvc:Axis Title="Sales" LabelFormatter="{Binding YFormatter}"></lvc:Axis>
+                </lvc:CartesianChart.AxisY>
+                <lvc:CartesianChart.AxisX>
+                    <lvc:Axis Title="Month" Labels="{Binding Labels}"></lvc:Axis>
+                </lvc:CartesianChart.AxisX>
+            </lvc:CartesianChart>
         </GroupBox>
-        
     </Grid>
 </Window>

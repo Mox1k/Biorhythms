@@ -18,7 +18,9 @@ namespace Biorhythms
             InitializeComponent();
         }
 
-        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        List<string> Labels = new List<string>();
+
+        private void Check_Allow_Checked(object sender, RoutedEventArgs e)
         {
             Custom_Date.IsEnabled = true;
         }
@@ -38,6 +40,7 @@ namespace Biorhythms
             const int emot = 28;
             const int intel = 33;
 
+            //Создаем таблицу
 
             if (Custom_Date.IsEnabled == true)
             {
@@ -64,9 +67,73 @@ namespace Biorhythms
             }
             Dates.ItemsSource = biorhythms;
 
+            // Создание графика
 
+            ChartValues<double> PhysicalValues = new ChartValues<double>();
+            ChartValues<double> EmotionalValues = new ChartValues<double>();
+            ChartValues<double> IntellectualValues = new ChartValues<double>();
+            SeriesCollection series = new SeriesCollection();
 
+            Labels.Clear();
+
+            foreach (Biorhythm bior in biorhythms)
+            {
+                PhysicalValues.Add(bior.Physical);
+                EmotionalValues.Add(bior.Emotional);
+                IntellectualValues.Add(bior.Intellectual);
+                Labels.Add(bior.Date.ToString());
+            }
+
+            series.Add(new LineSeries
+            {
+                Title = "Физические ритмы",
+                Values = PhysicalValues,
+            });
+            series.Add(new LineSeries
+            {
+                Title = "Эмоциональные ритмы",
+                Values = EmotionalValues
+            });
+            series.Add(new LineSeries
+            {
+                Title = "Интеллектуальные ритмы",
+                Values = IntellectualValues
+            });
+            chart.AxisY = new AxesCollection()
+            {
+                new Axis()
+                {
+                    Title = "Значения",
+                    MinValue = -100,
+                    MaxValue = 100,
+                }
+            };
+            chart.Series = series;
+            chart.Update();
         }
 
+        private void dateon_Checked(object sender, RoutedEventArgs e)
+        {
+            chart.AxisX = new AxesCollection()
+                {
+                    new Axis()
+                    {
+                        Title = "Дата",
+                        Labels = Labels,
+                    }
+                };
+        }
+
+        private void dateon_Unchecked(object sender, RoutedEventArgs e)
+        {
+            chart.AxisX = new AxesCollection()
+            {
+                new Axis()
+                {
+                        Title = "Дни",
+                        MinValue = 0,
+                }
+            };
+        }
     }
 }
