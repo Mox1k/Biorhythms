@@ -8,14 +8,14 @@
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"  WindowStartupLocation="CenterScreen">
-    <Grid>
+    <Grid >
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200*" MaxWidth="300"></ColumnDefinition>
+            <ColumnDefinition Width="200*" MaxWidth="360"></ColumnDefinition>
             <ColumnDefinition Width="300*"></ColumnDefinition>
             <ColumnDefinition Width="100*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="82*"></RowDefinition>
+            <RowDefinition Height="82*" MaxHeight="200px"></RowDefinition>
             <RowDefinition Height="12*"></RowDefinition>
             <RowDefinition Height="123*"></RowDefinition>
         </Grid.RowDefinitions>
@@ -33,9 +33,9 @@
                     <RowDefinition Height="27"></RowDefinition>
                     <RowDefinition Height="*" MaxHeight="35"></RowDefinition>
                 </Grid.RowDefinitions>
-                <TextBlock Text="Дата рождения" VerticalAlignment="Center" Grid.Row="0" FontSize="15"></TextBlock>
-                <TextBlock Text="Дата отсчета" VerticalAlignment="Center" Grid.Row="1" FontSize="15"></TextBlock>
-                <TextBlock Text="Длительность прогноза" VerticalAlignment="Center" Grid.Row="2" TextWrapping="Wrap" FontSize="15" Grid.ColumnSpan="2"></TextBlock>
+                <TextBlock Text="Дата рождения:" VerticalAlignment="Center" Grid.Row="0"></TextBlock>
+                <TextBlock Text="Дата отсчета:" VerticalAlignment="Center" Grid.Row="1"></TextBlock>
+                <TextBlock Text="Длительность прогноза:" VerticalAlignment="Center" Grid.Row="2" TextWrapping="Wrap" Grid.ColumnSpan="2"></TextBlock>
                 <CheckBox x:Name="Check_Allow" FlowDirection="LeftToRight" VerticalAlignment="Center" Grid.Row="3" Grid.ColumnSpan="2" Checked="Check_Allow_Checked" Unchecked="Check_Allow_Unchecked">
                     <TextBlock FlowDirection="LeftToRight" VerticalAlignment="Center" TextWrapping="Wrap" FontSize="11" Text="Произвольный ввод длительности прогноза"/>
                 </CheckBox>
@@ -96,7 +96,7 @@
 
         <GroupBox Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="2">
             
-            <lvc:CartesianChart Name="chart"  LegendLocation="Right" >
+            <lvc:CartesianChart Name="chart"  LegendLocation="Bottom" >
                 <lvc:CartesianChart.AxisY>
                     <lvc:Axis Title="Sales" LabelFormatter="{Binding YFormatter}"></lvc:Axis>
                 </lvc:CartesianChart.AxisY>
