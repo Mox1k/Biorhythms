@@ -7,7 +7,7 @@
         xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800"  WindowStartupLocation="CenterScreen">
+        Title="Калькулируем человеков" Height="450" Width="800"  WindowStartupLocation="CenterScreen">
     <Grid >
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200*" MaxWidth="360"></ColumnDefinition>
@@ -72,7 +72,8 @@
 
         <GroupBox Grid.Column="2" Header="Статистика">
             <ScrollViewer>
-                
+                <ListBox Name="list">
+                </ListBox>
             </ScrollViewer>
         </GroupBox>
 

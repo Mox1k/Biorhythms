@@ -42,6 +42,8 @@ namespace Biorhythms
 
             //Создаем таблицу
 
+            DateTime dateCountDown = Convert.ToDateTime(countDownTime.Text);
+
             if (Custom_Date.IsEnabled == true)
             {
                  arbitrarys = Convert.ToInt32(Custom_Date.Text);
@@ -50,7 +52,6 @@ namespace Biorhythms
             {
                  arbitrarys = Convert.ToInt32(cmbCountdown.Text);
             }
-            DateTime dateCountDown;
             for (int i = 0; i < arbitrarys; i++)
             {
                 dateCountDown = Convert.ToDateTime(countDownTime.Text);
@@ -110,6 +111,50 @@ namespace Biorhythms
             };
             chart.Series = series;
             chart.Update();
+
+            //Создание статистики
+
+            double maxEm = double.MinValue;
+            double maxInt = double.MinValue;
+            double maxPhys = double.MinValue;
+            double maxSum = double.MinValue;
+            string maxEmDate = String.Empty;
+            string maxIntDate = String.Empty;
+            string maxPhysDate = String.Empty;
+            string maxSumDate = String.Empty;
+
+
+            foreach (Biorhythm bior in biorhythms)
+            {
+                if (bior.Physical > maxPhys)
+                {
+                    maxPhys = bior.Physical;
+                    maxPhysDate = bior.Date;
+                }
+                if (bior.Emotional > maxEm)
+                {
+                    maxEm = bior.Emotional;
+                    maxEmDate = bior.Date;
+                }
+                if (bior.Intellectual > maxInt)
+                {
+                    maxInt = bior.Intellectual;
+                    maxIntDate = bior.Date;
+                }
+                if (bior.Total > maxSum)
+                {
+                    maxSum = bior.Total;
+                    maxSumDate = bior.Date;
+                }
+            }
+
+            list.Items.Clear();
+            list.Items.Add($"Дата рождения - {birthDate.ToShortDateString()}");
+            list.Items.Add($"Длительность прогноза - {arbitrarys}");
+            list.Items.Add($"Период с - {dateCountDown.ToShortDateString()} - {dateCountDown.AddDays(arbitrarys).ToShortDateString()}");
+            list.Items.Add($"Эмоциональный максимум - {maxEm}: {maxEmDate}");
+            list.Items.Add($"Интеллектуальный максимум - {maxInt}: {maxIntDate}");
+            list.Items.Add($"Физический максимум - {maxPhys}: {maxPhysDate}");
         }
 
         private void dateon_Checked(object sender, RoutedEventArgs e)
