@@ -10,7 +10,7 @@
         Title="MainWindow" Height="450" Width="800"  WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200*"></ColumnDefinition>
+            <ColumnDefinition Width="200*" MaxWidth="300"></ColumnDefinition>
             <ColumnDefinition Width="300*"></ColumnDefinition>
             <ColumnDefinition Width="100*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
@@ -23,21 +23,21 @@
         <GroupBox Header="Исходные данные">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition MaxWidth="200"></ColumnDefinition>
+                    <ColumnDefinition MaxWidth="200"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <RowDefinition ></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
+                    <RowDefinition Height="27"></RowDefinition>
+                    <RowDefinition Height="27"></RowDefinition>
+                    <RowDefinition Height="27"></RowDefinition>
+                    <RowDefinition Height="27"></RowDefinition>
+                    <RowDefinition Height="*" MaxHeight="35"></RowDefinition>
                 </Grid.RowDefinitions>
-                <TextBlock Text="Дата рождения" VerticalAlignment="Center" Grid.Row="0" FontSize="10"></TextBlock>
-                <TextBlock Text="Дата отсчета" VerticalAlignment="Center" Grid.Row="1" FontSize="10"></TextBlock>
-                <TextBlock Text="Длительность прогноза" VerticalAlignment="Center" Grid.Row="2" TextWrapping="Wrap" FontSize="10"></TextBlock>
+                <TextBlock Text="Дата рождения" VerticalAlignment="Center" Grid.Row="0" FontSize="15"></TextBlock>
+                <TextBlock Text="Дата отсчета" VerticalAlignment="Center" Grid.Row="1" FontSize="15"></TextBlock>
+                <TextBlock Text="Длительность прогноза" VerticalAlignment="Center" Grid.Row="2" TextWrapping="Wrap" FontSize="15" Grid.ColumnSpan="2"></TextBlock>
                 <CheckBox x:Name="Check_Allow" FlowDirection="LeftToRight" VerticalAlignment="Center" Grid.Row="3" Grid.ColumnSpan="2" Checked="Check_Allow_Checked" Unchecked="Check_Allow_Unchecked">
-                    <TextBlock FlowDirection="RightToLeft" VerticalAlignment="Center" TextWrapping="Wrap" FontSize="10" Text="Произвольный ввод длительности прогноза"/>
+                    <TextBlock FlowDirection="LeftToRight" VerticalAlignment="Center" TextWrapping="Wrap" FontSize="11" Text="Произвольный ввод длительности прогноза"/>
                 </CheckBox>
                 <DatePicker x:Name="BirthDate" Grid.Row="0" Grid.Column="1" SelectedDate="08.07.2002"></DatePicker>
                 <DatePicker x:Name="countDownTime" Grid.Row="1" Grid.Column="1" SelectedDate="{x:Static sys:DateTime.Now}"></DatePicker>
@@ -61,11 +61,11 @@
             <DataGrid Name="Dates" IsReadOnly="True" AutoGenerateColumns="False" CanUserAddRows="False" >
                 <!-- Header -->
                 <DataGrid.Columns>
-                    <DataGridTextColumn Binding="{Binding Date}" Header="Дата" Width="50"></DataGridTextColumn>
-                    <DataGridTextColumn Binding="{Binding Physical}" Header="Физическое" Width="75"></DataGridTextColumn>
-                    <DataGridTextColumn Binding="{Binding Emotional}" Header="Эмоциональное" Width="75"></DataGridTextColumn>
-                    <DataGridTextColumn Binding="{Binding Intellectual}" Header="Интеллектуальное" Width="75"></DataGridTextColumn>
-                    <DataGridTextColumn Binding="{Binding Total}" Header="Суммарное" Width="75"></DataGridTextColumn>
+                    <DataGridTextColumn Binding="{Binding Date}" Header="Дата" Width="*"></DataGridTextColumn>
+                    <DataGridTextColumn Binding="{Binding Physical}" Header="Физическое" Width="*"></DataGridTextColumn>
+                    <DataGridTextColumn Binding="{Binding Emotional}" Header="Эмоциональное" Width="*"></DataGridTextColumn>
+                    <DataGridTextColumn Binding="{Binding Intellectual}" Header="Интеллектуальное" Width="*"></DataGridTextColumn>
+                    <DataGridTextColumn Binding="{Binding Total}" Header="Суммарное" Width="*"></DataGridTextColumn>
                 </DataGrid.Columns>
             </DataGrid>
         </GroupBox>
