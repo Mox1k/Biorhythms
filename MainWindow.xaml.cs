@@ -26,8 +26,6 @@ namespace Biorhythms
             InitializeComponent();
         }
 
-
-
         List<string> Labels = new List<string>();
 
         private void Check_Allow_Checked(object sender, RoutedEventArgs e)
@@ -168,6 +166,8 @@ namespace Biorhythms
             list.Items.Add($"Физический максимум - {maxPhys}: {maxPhysDate}");
         }
 
+        //Изменение видимости даты
+
         private void dateon_Checked(object sender, RoutedEventArgs e)
         {
             chart.AxisX = new AxesCollection()
@@ -191,6 +191,8 @@ namespace Biorhythms
                 }
             };
         }
+
+        //Экспорт в CSV
 
         private void Export(object sender, EventArgs e)
         {
