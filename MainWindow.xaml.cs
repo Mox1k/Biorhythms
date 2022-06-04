@@ -5,6 +5,13 @@ using System.Linq;
 using System.Windows.Controls;
 using LiveCharts;
 using LiveCharts.Wpf;
+using System.IO;
+using System.Text;
+using System.Data;
+using Microsoft.Win32;
+using CsvHelper.Configuration;
+using CsvHelper;
+using System.Globalization;
 
 namespace Biorhythms
 {
@@ -13,10 +20,13 @@ namespace Biorhythms
     /// </summary>
     public partial class MainWindow : Window
     {
+        List<Biorhythm> biorhythms = new List<Biorhythm>();
         public MainWindow()
         {
             InitializeComponent();
         }
+
+
 
         List<string> Labels = new List<string>();
 
@@ -32,10 +42,11 @@ namespace Biorhythms
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            List<Biorhythm> biorhythms = new List<Biorhythm>();
+
+            biorhythms = new List<Biorhythm>();
             int arbitrarys = 0;
             DateTime birthDate = Convert.ToDateTime(BirthDate.Text);
-                
+
             const int phys = 23;
             const int emot = 28;
             const int intel = 33;
@@ -46,11 +57,11 @@ namespace Biorhythms
 
             if (Custom_Date.IsEnabled == true)
             {
-                 arbitrarys = Convert.ToInt32(Custom_Date.Text);
+                arbitrarys = Convert.ToInt32(Custom_Date.Text);
             }
             else
             {
-                 arbitrarys = Convert.ToInt32(cmbCountdown.Text);
+                arbitrarys = Convert.ToInt32(cmbCountdown.Text);
             }
             for (int i = 0; i < arbitrarys; i++)
             {
@@ -179,6 +190,23 @@ namespace Biorhythms
                         MinValue = 0,
                 }
             };
+        }
+
+        private void Export(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.FileName = "Results.csv";
+            saveFileDialog.ShowDialog();
+            string path = saveFileDialog.FileName;
+            CsvConfiguration configuration = new CsvConfiguration(CultureInfo.InvariantCulture)
+            {
+                Delimiter = ";"
+            };
+            using (StreamWriter streamWriter = new StreamWriter(path, false, System.Text.Encoding.UTF8))
+            using (CsvWriter csvWriter = new CsvWriter(streamWriter, configuration))
+            {
+                csvWriter.WriteRecords(biorhythms);
+            }
         }
     }
 }

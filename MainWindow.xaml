@@ -84,10 +84,10 @@
                     <TextBlock VerticalAlignment="Center">Построить график</TextBlock>
                 </StackPanel>
             </Button>
-            <Button Margin="0 0 10 0">
+            <Button Margin="0 0 10 0" Click="Export">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="data\word.ico"></Image>
-                    <TextBlock VerticalAlignment="Center">Передать в Word</TextBlock>
+                    <TextBlock VerticalAlignment="Center">Передать в CSV</TextBlock>
                 </StackPanel>
             </Button>
             <CheckBox IsChecked="False" x:Name="dateon" FlowDirection="LeftToRight" VerticalAlignment="Center" Checked="dateon_Checked" Unchecked="dateon_Unchecked">
